@@ -1,0 +1,1696 @@
+/* ==========================================================================
+   General CSS Reset & Global Typography
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif; /* Prioritizing Inter, fallback to Arial/sans-serif */
+    background-color: #f0f2f5; /* Light grey background for the entire application */
+    color: #333; /* Default text color */
+    line-height: 1.6; /* Default line height */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll globally */
+    /* Note: 'display: flex' for admin layout is handled by .admin-layout-wrapper */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ==========================================================================
+   Global Elements (Navbar, Footer, Main Container, Buttons)
+   Applied consistently across public pages. Admin pages use specific overrides.
+   ========================================================================== */
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px; /* Added for consistency with new styles */
+    margin: 10px 20px; /* Added for consistency with new styles */
+}
+
+.navbar-left .logo {
+    height: 30px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right ul {
+    display: flex;
+    gap: 30px;
+    margin-right: 20px;
+}
+
+.navbar-right ul li a {
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-right ul li a:hover,
+.navbar-right ul li a.active {
+    color: #007bff;
+}
+
+/* Main Content Container for Public Pages */
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    flex-grow: 1; /* Allows main content to grow and push footer down in flex contexts */
+}
+
+/* Footer (General) */
+.footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    background-color: #333;
+    color: #bbb;
+    font-size: 0.9em;
+}
+
+/* Buttons (General Style for most buttons) */
+.btn, button { /* Apply to both .btn class and <button> tag globally */
+    width: auto; /* DEFAULT: Auto width, crucial for table buttons */
+    padding: 8px 15px; /* Default padding for general buttons */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: inline-block; /* Ensure buttons behave like inline-blocks */
+    text-align: center; /* Center text within button */
+}
+
+.btn:hover, button:hover {
+    background-color: #7a7a7a; /* Slightly darker on hover */
+    transform: translateY(-1px); /* Slight lift effect */
+}
+
+.btn:active, button:active {
+    transform: translateY(0); /* Press down effect */
+}
+
+/* Specific Navbar Button styles (overrides general .btn) */
+.btn-signup {
+    background-color: #4CAF50;
+    color: white;
+    margin-right: 10px;
+}
+
+.btn-signup:hover {
+    background-color: #45a049;
+}
+
+.btn-login {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-login:hover {
+    background-color: #0056b3;
+}
+
+
+/* ==========================================================================
+   Form & Input Field Styles (Shared across login, register, admin forms)
+   ========================================================================== */
+.form-group {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #444;
+    font-size: 0.9em;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="file"],
+select,
+textarea {
+    width: 100%; /* Default width for form inputs */
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #333;
+    background-color: #f9f9f9; /* Lighter input background */
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+textarea::placeholder {
+    color: #bbb;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="file"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+textarea {
+    min-height: 100px; /* Default for textareas */
+    resize: vertical;
+}
+
+/* Specific button style for forms that should be full width */
+.form-full-width-btn { /* Apply this class to buttons that need 100% width in forms */
+    width: 100%;
+}
+
+
+/* ==========================================================================
+   Login/Register Page Specific Styles
+   ========================================================================== */
+.login-container, .signup-container {
+    max-width: 400px;
+    width: 100%;
+    padding: 2rem;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    margin: 50px auto; /* Centering these forms */
+}
+
+.login-container h1, .signup-container h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2em;
+    color: #333;
+}
+
+.login-container p, .signup-container p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #555;
+    font-size: 0.95em;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-bottom: 0.5rem;
+    font-size: 0.85em;
+}
+
+.forgot-password a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.forgot-password a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+input[type="checkbox"] {
+    margin-right: 0.5rem;
+    min-width: 1rem;
+    min-height: 1rem;
+}
+
+.checkbox-group a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.checkbox-group a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Separator "Or" */
+.separator {
+    text-align: center;
+    margin: 1.5rem 0;
+    color: #777;
+    position: relative;
+    font-size: 0.9em;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: #eee;
+}
+
+.separator::before {
+    left: 0;
+}
+
+.separator::after {
+    right: 0;
+}
+
+/* Google button */
+.google-btn {
+    background-color: white;
+    color: #555;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.google-btn:hover {
+    background-color: #f8f8f8;
+    border-color: #bbb;
+}
+
+.google-btn img {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.75rem;
+}
+
+/* Sign up/Login links at the bottom */
+.signup-link, .login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #555;
+    font-size: 0.95em;
+}
+
+.signup-link a, .login-link a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.signup-link a:hover, .login-link a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+
+/* ==========================================================================
+   Home Page Specific Styles
+   ========================================================================== */
+.section-title {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 40px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #007bff;
+    border-radius: 2px;
+}
+
+/* Hero/Intro Section */
+.hero-section {
+    background: linear-gradient(rgba(62, 80, 174, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1200x400/3498db/FFFFFF?text=World+Currencies') no-repeat center center/cover;
+    color: white; /* Ensure text is visible on dark background */
+    text-align: center;
+    padding: 100px 20px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.hero-section h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.hero-section p {
+    font-size: 1.3em;
+    color: #f0f2f5; /* Lighter text for contrast */
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Country Selection Section */
+.country-selection {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.country-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+.country-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block; /* Ensure it's a block for full click area */
+}
+
+.country-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.country-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    border: 2px solid #eee;
+}
+
+.country-card h3 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+/* Currency Story Section */
+.currency-story-section {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    padding: 40px;
+    margin-bottom: 50px;
+}
+
+.currency-story-content {
+    flex: 2;
+}
+
+.currency-story-content h2 {
+    font-size: 2.2em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.currency-story-content p {
+    font-size: 1.05em;
+    color: #555;
+    line-height: 1.7;
+}
+
+.currency-story-image {
+    flex: 1;
+    text-align: center;
+}
+
+.currency-story-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Featured Collection Section */
+.featured-collection-section {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+.collection-item {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.collection-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.collection-item img {
+    max-width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.collection-item h4 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.collection-item p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Importance Section */
+.importance-section {
+    background-color: #e6f2ff;
+    border-radius: 10px;
+    padding: 40px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.importance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.importance-item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.importance-item h4 {
+    font-size: 1.3em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.importance-item p {
+    font-size: 0.95em;
+    color: #444;
+}
+
+/* Call to Action Section */
+.cta-section {
+    background-color: #007bff;
+    color: white;
+    padding: 50px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.cta-section h2 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons .btn { /* Overriding general .btn styles for CTA buttons */
+    font-size: 1.1em;
+    padding: 12px 30px;
+    margin: 0 10px;
+    border-radius: 30px;
+    border: 2px solid white;
+    width: auto; /* Ensure these are auto-width */
+}
+
+.cta-buttons .btn-explore {
+    background-color: white;
+    color: #007bff;
+}
+
+.cta-buttons .btn-explore:hover {
+    background-color: #e6f2ff;
+}
+
+.cta-buttons .btn-register {
+    background-color: transparent;
+    color: white;
+}
+
+.cta-buttons .btn-register:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Detailed Footer Styles (from home.html) */
+.detailed-footer {
+    background-color: #f7f7f7;
+    padding: 40px 20px;
+    margin-top: 50px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 0.9em;
+    color: #555;
+    /* margin-top: auto; - This is managed by body's flex on public layout or within .admin-layout-wrapper */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e9e9e9;
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    color: #a00000;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    font-weight: bold;
+    border-bottom: 2px solid #a00000;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-section p, .footer-section ul {
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #007bff;
+}
+
+.footer-contact-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+/* Base64 SVG icons for email and phone */
+.footer-contact-info .icon-email {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzU1NSIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCI+PHBhdGggZD0iTTAgMGgyNHYyNEgwVjB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTIwIDRIMGN-MS4xIDAtMS45OS45LTEuOTkgMkwyIDE4YzAgMS4xLjkgMiAyIDJoMTZjMS4xIDAgMi0uOSAyLTJWNmMwLTEuMS0uOS0yLTItMnptMCA0bC04IDUtOC01VjZsOCAzIDgtM3YyeiIvPjwvc3ZnPg==');
+}
+
+.footer-contact-info .icon-phone {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzU1NSIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCI+PHBhdGggZD0iTTAgMGgyNHYyNEgwVjB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTYuNjIgMTAuNzljMS40NCAyLjgzIDMuNzYgNS4xNCA2LjU5IDYuNTlsMi4yLTIuMmMuMjctLjI3LjY3LS4zNiAxLjAyLS4yNCAxLjEyLjM3IDIuMzM.NTcgMy41Ny41Ny41NSAwIDEgLjQ1IDEgMVYyMGMwIC41NS0uNDUgMS0xIDEtOS4zOSAwLTE3LTcuNjEtMTctMTcgMC0uNTUuNDUtMSAxLTFoMy41Yy41NSAwIDEgLjQ1IDEgMSAwIDEuMjUuMiAyLjQ1LjU3IDMuNTcuMTEuMzUuMDMuNzQtLjI1IDEuMDJMNi42MiAxMC43OXoiLz48L2N2Zz4=');
+}
+
+.footer-disclaimer {
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+    padding-top: 20px;
+    text-align: center;
+    border-top: 1px solid #e9e9e9;
+}
+
+.footer-copyright {
+    text-align: center;
+    font-size: 0.85em;
+    color: #777;
+}
+
+/* ==========================================================================
+   Currency Detail Page Specific Styles (Integrated from previous fix)
+   ========================================================================== */
+
+/* Main Content Wrapper for Currency Detail Page */
+.currency-detail-wrapper {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* Top Section: Header and Main Image */
+.currency-detail-header {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.currency-detail-content {
+    flex: 2; /* Takes more space */
+    min-width: 300px; /* Ensures it doesn't get too small */
+}
+
+.currency-detail-content h1 {
+    font-size: 2.8em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.currency-detail-content p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.8;
+}
+
+.currency-detail-image {
+    flex: 1; /* Takes less space */
+    min-width: 250px; /* Ensures it doesn't get too small */
+    text-align: center;
+}
+
+.currency-detail-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Bottom Section: Search and Grid */
+.currency-notes-section {
+    padding-top: 20px;
+}
+
+.currency-controls {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.currency-controls input[type="text"] {
+    width: 80%;
+    max-width: 500px;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 25px; /* Pill shape */
+    font-size: 1em;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.currency-controls input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.25);
+}
+
+/* Currency Grid - The core fix for overlapping */
+.currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid columns */
+    gap: 30px; /* Space between cards */
+    padding: 20px 0;
+}
+
+/* Individual Currency Card */
+.currency-card {
+    background-color: #f8f9fa; /* Lighter background for cards */
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex; /* Use flexbox for internal card layout */
+    flex-direction: column;
+    justify-content: space-between; /* Push button to bottom */
+    align-items: center;
+}
+
+.currency-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.currency-card img.currency-note-image {
+    max-width: 100%;
+    height: 150px; /* Fixed height for consistency */
+    object-fit: contain; /* Ensures entire image is visible */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    cursor: pointer; /* Indicate clickable */
+    transition: transform 0.2s ease;
+}
+
+.currency-card img.currency-note-image:hover {
+    transform: scale(1.03);
+}
+
+.currency-card h4 {
+    font-size: 1.3em;
+    color: #34495e;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.currency-card p {
+    font-size: 0.95em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.currency-card .btn-detail {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Full width button */
+    margin-top: auto; /* Pushes button to the bottom */
+}
+
+.currency-card .btn-detail:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Modals */
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    backdrop-filter: blur(5px); /* Frosted glass effect */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh; /* Limit height for scrollability */
+    overflow-y: auto; /* Enable vertical scroll for content if needed */
+    animation: fadeInScale 0.3s ease-out; /* Simple animation */
+}
+
+.modal-close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: color 0.3s ease;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: 70vh; /* Limit image height */
+    display: block; /* Remove extra space below image */
+    margin: 0 auto 20px auto; /* Center image and add space below */
+    border-radius: 8px;
+}
+
+.modal-download-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 500;
+    display: block; /* Make it a block element */
+    margin: 0 auto; /* Center the button */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-download-btn:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Note Detail Modal Specifics */
+.note-detail-modal-content {
+    max-width: 700px; /* Wider for more info */
+    text-align: left;
+}
+
+.note-detail-modal-content h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.note-detail-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px;
+    flex-wrap: wrap; /* Allow images to wrap on smaller screens */
+}
+
+.note-detail-images img {
+    max-width: 48%; /* Adjust for two images side by side with gap */
+    height: 180px; /* Consistent height for note images */
+    object-fit: contain;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.note-detail-info p {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.note-detail-info strong {
+    color: #222;
+}
+
+.note-detail-info span {
+    font-weight: normal;
+}
+
+/* Status styling */
+.status-info {
+    font-weight: 600;
+}
+
+.status-Active {
+    color: #28a745; /* Green for active */
+}
+
+.status-Stopped {
+    color: #dc3545; /* Red for stopped */
+}
+
+/* Animations */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive adjustments for modals */
+@media (max-width: 768px) {
+    .currency-detail-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .currency-detail-content, .currency-detail-image {
+        min-width: unset;
+        width: 100%;
+    }
+    .currency-detail-content h1 {
+        font-size: 2.2em;
+    }
+    .currency-detail-content p {
+        font-size: 1em;
+    }
+
+    .currency-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Smaller cards on mobile */
+        gap: 20px;
+    }
+
+    .currency-card img.currency-note-image {
+        height: 120px;
+    }
+
+    .note-detail-images {
+        flex-direction: column;
+        align-items: center;
+    }
+    .note-detail-images img {
+        max-width: 90%;
+        height: auto; /* Allow height to adjust */
+    }
+}
+
+@media (max-width: 480px) {
+    .currency-detail-wrapper {
+        padding: 15px;
+    }
+    .currency-controls input[type="text"] {
+        width: 95%;
+    }
+    .currency-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+    .currency-card {
+        padding: 15px;
+    }
+    .currency-card img.currency-note-image {
+        height: 100px;
+    }
+}
+/* Status styling */
+.status-info {
+    font-weight: 600;
+}
+
+.status-Active {
+    color: #28a745; /* Green for active */
+}
+
+.status-Stopped {
+    color: #dc3545; /* Red for stopped */
+}
+/* ==========================================================================
+   Statistics Page Specific Styles
+   ========================================================================== */
+
+.page-title {
+    font-size: 3em;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 20px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for left and right stats */
+    gap: 40px; /* Space between the two main columns */
+    margin-bottom: 50px;
+}
+
+.stats-left, .stats-right {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between cards within each column */
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #333;
+}
+
+.date-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.date-nav .arrow {
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #007bff;
+    transition: color 0.2s ease;
+}
+
+.date-nav .arrow:hover {
+    color: #0056b3;
+}
+
+.date-nav span:nth-child(2) { /* "Today" or year display */
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.date-nav .days {
+    font-size: 0.9em;
+    color: #666;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.date-nav .days:hover {
+    background-color: #f0f2f5;
+}
+
+/* Graph Placeholders */
+.line-graph-placeholder,
+.bar-graph-placeholder {
+    background-color: #e9ecef; /* Light grey background for graph area */
+    border-radius: 8px;
+    min-height: 250px; /* Minimum height for the graph area */
+    display: flex;
+    justify-content: space-around; /* For bars */
+    align-items: flex-end; /* For bars to start from bottom */
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative; /* For labels */
+}
+
+.line-graph-placeholder {
+    /* Specific styles for line graph if needed, e.g., a grid background */
+    background-image: linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+                      linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+    background-size: 25px 25px; /* Size of the grid cells */
+}
+
+.graph-legend {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.legend-color.yellow { background-color: #ffc107; }
+.legend-color.blue { background-color: #007bff; }
+
+
+/* Bar Graph Specifics */
+.bar-graph-placeholder {
+    align-items: flex-end; /* Bars start from the bottom */
+    padding-bottom: 30px; /* Space for labels below bars */
+}
+
+.bar {
+    width: 12%; /* Width of each bar */
+    background-color: #007bff;
+    margin: 0 1%; /* Space between bars */
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    transition: height 0.5s ease-out; /* Smooth height transition */
+}
+
+.bar-label {
+    position: absolute;
+    bottom: -25px; /* Position label below the bar */
+    color: #555;
+    font-size: 0.85em;
+    font-weight: 500;
+    white-space: nowrap; /* Prevent label from wrapping */
+}
+
+.description-text {
+    padding: 30px;
+    background-color: #f8faff; /* Light background for text cards */
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.description-text h3 {
+    font-size: 1.8em;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.description-text p {
+    font-size: 1em;
+    color: #444;
+    line-height: 1.7;
+}
+
+/* ==========================================================================
+   Responsive Adjustments for Statistics Page
+   ========================================================================== */
+@media (max-width: 992px) {
+    .stats-grid {
+        grid-template-columns: 1fr; /* Stack columns on medium/small screens */
+        gap: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .page-title {
+        font-size: 2.2em;
+        margin-bottom: 30px;
+    }
+    .card {
+        padding: 20px;
+    }
+    .card-header {
+        flex-direction: column; /* Stack header elements */
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .date-nav {
+        flex-wrap: wrap; /* Allow date nav items to wrap */
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+    .date-nav .days {
+        flex-grow: 1; /* Allow days buttons to grow */
+        text-align: center;
+    }
+    .bar-graph-placeholder {
+        padding: 15px;
+    }
+    .bar {
+        width: 15%; /* Adjust bar width for more bars on small screens */
+    }
+    .bar-label {
+        font-size: 0.75em;
+        bottom: -20px;
+    }
+    .description-text h3 {
+        font-size: 1.5em;
+    }
+}
+/* ==========================================================================
+   About Us Page Specific Styles
+   ========================================================================== */
+
+/* Main About Us Section (Our Mission & Vision) */
+.about-us-section {
+    display: flex;
+    flex-wrap: wrap; /* Allows content and image to wrap */
+    gap: 50px; /* Increased gap for better separation */
+    align-items: center; /* Vertically align content and image */
+    background-color: #fff;
+    border-radius: 15px; /* More pronounced rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Stronger, softer shadow */
+    padding: 60px; /* More internal padding */
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden; /* Hide overflow for potential background elements */
+}
+
+/* Optional: Add a subtle background pattern or gradient for more visual interest */
+.about-us-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, rgba(0,123,255,0.1) 0%, rgba(0,180,255,0) 100%);
+    border-radius: 50%;
+    z-index: 0;
+    filter: blur(40px);
+}
+.about-us-section::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, rgba(40,167,69,0.1) 0%, rgba(40,167,69,0) 100%);
+    border-radius: 50%;
+    z-index: 0;
+    filter: blur(40px);
+}
+
+.about-us-content {
+    flex: 2; /* Takes more space for text */
+    min-width: 350px; /* Ensures text block doesn't get too narrow */
+    position: relative; /* For z-index to stay above pseudo-elements */
+    z-index: 1;
+}
+
+.about-us-content h1 {
+    font-size: 3em; /* Larger, more impactful heading */
+    color: #2c3e50; /* Darker, sophisticated color */
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.about-us-content p {
+    font-size: 1.15em; /* Slightly larger body text */
+    color: #555;
+    line-height: 1.8; /* Improved readability */
+    margin-bottom: 20px;
+}
+
+.about-us-image {
+    flex: 1; /* Image takes remaining space */
+    min-width: 300px; /* Ensures image doesn't get too small */
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.about-us-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow for image */
+    transform: rotate(2deg); /* Subtle tilt for visual interest */
+    transition: transform 0.3s ease;
+}
+
+.about-us-image img:hover {
+    transform: rotate(0deg) scale(1.02); /* Straighten and slightly enlarge on hover */
+}
+
+
+/* What We Do Section (Our Missions) */
+.our-missions-section {
+    background-color: #f8faff; /* Very light blue background */
+    border-radius: 15px;
+    padding: 60px;
+    margin-bottom: 50px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03); /* Subtle shadow */
+}
+
+.our-missions-section h2 {
+    font-size: 2.5em;
+    color: #007bff; /* Primary brand color */
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block; /* To allow pseudo-element under title */
+}
+
+.our-missions-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #007bff;
+    border-radius: 2px;
+}
+
+.missions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3-4 columns on desktop */
+    gap: 30px; /* Space between cards */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.mission-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Card shadow */
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 180px; /* Ensure consistent card height */
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e0e0; /* Subtle border */
+    position: relative;
+    overflow: hidden;
+}
+
+.mission-card::before { /* Decorative overlay effect */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0,123,255,0.05) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mission-card:hover {
+    transform: translateY(-10px); /* Lift card on hover */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.mission-card:hover::before {
+    opacity: 1; /* Show overlay on hover */
+}
+
+/* Who Are We Section */
+.bottom-content-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    align-items: center;
+    background-color: #fdfdfd; /* Slightly different background */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 60px;
+    margin-bottom: 50px;
+}
+
+.bottom-content-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.bottom-content-image img {
+    max-width: 100%;
+    height: 350px; /* Adjust height for the image */
+    object-fit: cover; /* Ensures image covers the area, possibly cropping */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border: 5px solid #fff; /* White border around the image */
+    outline: 2px solid #007bff; /* Primary color outline */
+    outline-offset: 5px; /* Space between border and outline */
+    transition: transform 0.3s ease, outline-color 0.3s ease;
+}
+
+.bottom-content-image img:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    outline-color: #28a745; /* Change outline color on hover */
+}
+
+.who-are-we-text {
+    flex: 2;
+    min-width: 350px;
+}
+
+.who-are-we-text h3 {
+    font-size: 2.2em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.who-are-we-text p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* ==========================================================================
+   Responsive Adjustments for About Us Page
+   ========================================================================== */
+@media (max-width: 992px) {
+    .about-us-section,
+    .bottom-content-section {
+        flex-direction: column; /* Stack content vertically */
+        text-align: center;
+        padding: 40px; /* Reduced padding */
+        gap: 40px;
+    }
+    .about-us-content,
+    .about-us-image,
+    .who-are-we-text,
+    .bottom-content-image {
+        flex: none; /* Reset flex-grow/shrink */
+        width: 100%; /* Take full width */
+        min-width: unset; /* Remove min-width constraint */
+    }
+    .about-us-image img,
+    .bottom-content-image img {
+        transform: none; /* Remove initial tilt on small screens */
+    }
+    .about-us-image img:hover {
+        transform: scale(1.01); /* Smaller hover zoom for mobile */
+    }
+    .our-missions-section {
+        padding: 40px;
+    }
+    .our-missions-section h2 {
+        font-size: 2em;
+    }
+    .missions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust grid for smaller screens */
+    }
+    .mission-card {
+        padding: 25px;
+        min-height: 160px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-us-section,
+    .bottom-content-section {
+        padding: 25px;
+        margin-bottom: 30px;
+        gap: 30px;
+    }
+    .about-us-content h1 {
+        font-size: 2.2em;
+    }
+    .our-missions-section {
+        padding: 25px;
+        margin-bottom: 30px;
+    }
+    .our-missions-section h2 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+    .missions-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+    .mission-card {
+        min-height: auto; /* Allow height to adjust naturally */
+    }
+    .bottom-content-image img {
+        height: 250px; /* Smaller height for mobile team image */
+    }
+}
+/* Navbar Auth Toggle Styles */
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between buttons */
+    margin-left: 20px; /* Space from main nav links */
+}
+
+.auth-buttons .btn-profile {
+    background-color: #f0f2f5; /* Light background */
+    color: #333; /* Dark text */
+    border: 1px solid #e0e0e0;
+}
+
+.auth-buttons .btn-profile:hover {
+    background-color: #e0e2e5;
+    transform: translateY(-2px);
+}
+
+.auth-buttons .btn-logout {
+    background-color: #dc3545; /* Red for logout */
+    color: white;
+    border: none;
+}
+
+.auth-buttons .btn-logout:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments for auth buttons */
+@media (max-width: 768px) {
+    .auth-buttons {
+        flex-direction: column;
+        width: 80%; /* Match other navbar buttons */
+        margin-left: 0;
+        gap: 10px;
+    }
+    .auth-buttons .btn {
+        width: 100%; /* Full width on mobile */
+        margin: 0; /* Remove horizontal margin */
+    }
+}
+/* Existing styles in app.css will be here */
+
+/* Styles for the Statistics Page */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.text-center { text-align: center; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-5 { margin-bottom: 3rem; }
+.py-5 { padding-top: 3rem; padding-bottom: 3rem; }
+.card {
+    background-color: #fff;
+    border: none;
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Stronger shadow */
+    padding: 25px;
+    margin-bottom: 25px; /* Spacing between cards */
+}
+.card-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+}
+.display-4 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #007bff; /* Primary color */
+}
+.font-weight-bold { font-weight: 700; }
+.text-muted { color: #6c757d; }
+
+/* Responsive grid for Bootstrap-like columns */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.col-md-6, .col-12, .col-6 {
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+@media (min-width: 768px) {
+    .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+.col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.col-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.h-100 { height: 100%; }
+
+/* Chart container to control dimensions */
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    margin: 0 auto;
+}
+canvas {
+    max-width: 100%;
+    height: 100% !important;
+    width: 100% !important;
+}
